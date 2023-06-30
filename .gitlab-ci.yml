@@ -1,0 +1,20 @@
+image: didstopia/sdl2
+
+stages:
+  - build
+  - test
+
+job:build:
+  stage: build
+  script:
+    - apt-get update && apt-get upgrade -y
+    - apt-get install --yes make gcc
+
+job:test:unit:
+  before_script:
+    - echo "Start Tests"
+  script:
+    - make test
+  after_script:
+    - echo "Tests have been done"
+
